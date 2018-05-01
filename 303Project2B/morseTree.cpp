@@ -9,6 +9,8 @@
 string morseTree::decode(string codedMessage)
 {
 	string result;
+	cout << "Decoding message: " << codedMessage << endl;
+
 	BTNode<char>* currentNode = root;
 
 	for (int i = 0; i < codedMessage.length(); i++)
@@ -42,15 +44,18 @@ string morseTree::decode(string codedMessage)
 	}
 	char ch = currentNode->data;
 	result += ch;
+
+	cout << "Decoded message: " << result << endl << endl;
+
 	return result;
 }
 
-morseTree morseTree::buildTree(ifstream& file, morseTree tree)
+morseTree morseTree::read_binary_tree(istream& file)
 {
-	char letter = '0';
+	char letter;
 	string code;
 
-	//morseTree myTree(const char& letter);
+	morseTree myTree(0);
 
 	BTNode<char>**bnode;
 
@@ -58,7 +63,7 @@ morseTree morseTree::buildTree(ifstream& file, morseTree tree)
 	{
 		file >> letter >> code;
 
-		bnode = &tree.root;
+		bnode = &myTree.root;
 
 		for (int i = 0; i < code.length(); i++)
 		{
@@ -75,6 +80,5 @@ morseTree morseTree::buildTree(ifstream& file, morseTree tree)
 		*bnode = new BTNode<char>(letter);
 
 	}
-	file.close();
-	return tree;
+	return myTree;
 }

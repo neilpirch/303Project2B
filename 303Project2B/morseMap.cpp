@@ -46,7 +46,7 @@ string morseMap::encode(string message)
 			cout <<  "Letter not found in codeMap.";
 		}
 	}
-	cout << "Encoded message: " << result << endl;
+	cout << "Encoded message: " << result << endl << endl;
 	return result;
 }
 
